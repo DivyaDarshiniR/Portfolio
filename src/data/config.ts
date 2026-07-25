@@ -25,7 +25,7 @@ const config = {
   ],
   author: "Naresh Khatri",
   email: "naresh.khatri2345@gmail.com",
-  site: "https://nareshkhatri.site",
+  site: "https://nareshkhatri.dev",
 
   // for github stars button
   githubUsername: "naresh-khatri",
