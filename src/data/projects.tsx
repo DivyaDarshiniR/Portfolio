@@ -504,7 +504,7 @@ const projects: Project[] = [
         PROJECT_SKILLS.docker,
       ],
     },
-    live: "https://waku.nareshkhatri.site",
+    live: "https://waku.nareshkhatri.dev",
     github: "https://github.com/Naresh-Khatri/waku",
     get content() {
       return (
@@ -688,7 +688,7 @@ const projects: Project[] = [
         PROJECT_SKILLS.docker,
       ],
     },
-    live: "https://kanbi.nareshkhatri.site",
+    live: "https://kanbi.nareshkhatri.dev",
     github: "https://github.com/naresh-Khatri/kanbi",
     get content() {
       return (
@@ -779,7 +779,7 @@ const projects: Project[] = [
     src: "/assets/projects-screenshots/portfolio/landing.png",
     screenshots: ["1.png"],
     live: "http://nareshkhatri.vercel.app",
-    github:"https://github.com/Naresh-Khatri/Portfolio",
+    github: "https://github.com/Naresh-Khatri/Portfolio",
     skills: {
       frontend: [
         PROJECT_SKILLS.ts,
