@@ -3,8 +3,6 @@ import { config } from "@/data/config";
 import { Resend } from "resend";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
@@ -26,7 +24,8 @@ const Email = z.object({
   message: z.string().min(10, "Message is too short!"),
 });
 export async function POST(req: Request) {
-  if (!process.env.RESEND_API_KEY) {
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (!resendApiKey) {
     return Response.json(
       { error: "The contact form is not configured yet." },
       { status: 503 },
@@ -34,6 +33,7 @@ export async function POST(req: Request) {
   }
 
   try {
+    const resend = new Resend(resendApiKey);
     const forwardedFor = req.headers.get("x-forwarded-for");
     const ip = forwardedFor?.split(",")[0]?.trim() ?? "unknown";
     if (isRateLimited(ip)) {
