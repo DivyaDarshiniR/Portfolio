@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { footer } from "./config";
 import { Button } from "../ui/button";
@@ -6,7 +8,13 @@ import SocialMediaButtons from "../social/social-media-icons";
 import { config } from "@/data/config";
 
 function CopyrightYear() {
-  return <>{new Date().getFullYear()}</>;
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
+  return <>{year}</>;
 }
 
 function Footer() {

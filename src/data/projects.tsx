@@ -15,6 +15,7 @@ export type Project = {
   category: string;
   title: string;
   src: string;
+  background?: string;
   screenshots: string[];
   skills: { frontend: Skill[]; backend: Skill[] };
   content: ReactNode;
