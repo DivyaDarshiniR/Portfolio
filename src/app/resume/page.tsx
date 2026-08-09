@@ -1,9 +1,9 @@
 import ResumeView from "./resume-view";
 
 export const metadata = {
-  title: "Résumé | Naresh Khatri",
+  title: "Resume | Divya Darshini R",
   description:
-    "Résumé of Naresh Khatri — Senior Full-Stack Engineer. View online or download the PDF.",
+    "Resume of Divya Darshini R, Software Engineer Intern and Full-Stack Developer. View online or download the PDF.",
 };
 
 export default function ResumePage() {

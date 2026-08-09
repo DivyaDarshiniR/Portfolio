@@ -26,8 +26,16 @@ const Email = z.object({
   message: z.string().min(10, "Message is too short!"),
 });
 export async function POST(req: Request) {
+  if (!process.env.RESEND_API_KEY) {
+    return Response.json(
+      { error: "The contact form is not configured yet." },
+      { status: 503 },
+    );
+  }
+
   try {
-    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const forwardedFor = req.headers.get("x-forwarded-for");
+    const ip = forwardedFor?.split(",")[0]?.trim() ?? "unknown";
     if (isRateLimited(ip)) {
       return Response.json({ error: "Too many requests. Please try again later." }, { status: 429 });
     }
@@ -42,7 +50,7 @@ export async function POST(req: Request) {
       return Response.json({ error: zodError?.message }, { status: 400 });
 
     const { data: resendData, error: resendError } = await resend.emails.send({
-      from: "Porfolio <onboarding@resend.dev>",
+      from: "Portfolio <onboarding@resend.dev>",
       to: [config.email],
       subject: "Contact me from portfolio",
       react: EmailTemplate({

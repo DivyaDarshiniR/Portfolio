@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
-import { File, Github, Linkedin } from "lucide-react";
+import { File } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -11,7 +11,7 @@ import {
 import { usePreloader } from "../preloader";
 import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
-import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 import { config } from "@/data/config";
 
 import SectionWrapper from "../ui/section-wrapper";
@@ -57,7 +57,7 @@ const HeroSection = () => {
                       >
                         {config.author.split(" ")[0]}
                         <br className="md:block hiidden" />
-                        {config.author.split(" ")[1]}
+                        {config.author.split(" ").slice(1).join(" ")}
                       </h1>
                     </TooltipTrigger>
                     <TooltipContent
@@ -76,15 +76,13 @@ const HeroSection = () => {
                       "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
                     )}
                   >
-                    A Full Stack Web Developer
+                    Software Engineer Intern &amp; Full-Stack Developer
                   </p>
                 </BlurIn>
               </div>
               <div className="mt-8 flex flex-col gap-3 w-fit">
                 <Link
-                  href={
-                    "https://drive.google.com/file/d/1MTSsUA8V7Po2AsNXT8kZ5sLOpzC8l7qm/view?usp=sharing"
-                  }
+                  href="/resume"
                   target="_blank"
                   className="flex-1"
                 >
@@ -112,14 +110,6 @@ const HeroSection = () => {
                     </TooltipContent>
                   </Tooltip>
                   <div className="flex items-center h-full gap-2">
-                    <Link
-                      href={config.social.twitter}
-                      target="_blank"
-                    >
-                      <Button variant={"outline"}>
-                        <SiX size={24} />
-                      </Button>
-                    </Link>
                     <Link
                       href={config.social.github}
                       target="_blank"
